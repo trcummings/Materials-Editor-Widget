@@ -150,10 +150,16 @@ div.material-info > span {
 }
 
 /* Material editor styles */
-div.material-form {
+div.material-display {
   padding: 1em;
   border-radius: 0.5em;
   background-color: #1d1d21;
+}
+
+div.material-form {
+  /* padding: 1em;
+  border-radius: 0.5em;
+  background-color: #1d1d21; */
   display: flex;
   flex-flow: column wrap;
 }
