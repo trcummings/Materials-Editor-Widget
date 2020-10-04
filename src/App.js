@@ -18,7 +18,7 @@ export default function App() {
   const [materials, setMaterials] = useState({});
   const [selectedMaterial, setSelectedMaterial] = useState(null);
 
-  useEffect(() => {
+  function getAllMaterials() {
     fetch("http://localhost:3000/materials", {
       method: "GET",
       headers: {
@@ -33,6 +33,77 @@ export default function App() {
         if (!selectedMaterial) setSelectedMaterial(Object.keys(data)[0]);
       })
       .catch((error) => console.error(error));
+  }
+
+  function addMaterial() {
+    fetch(`http://localhost:3000/materials`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(defaultMaterial),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // Data is the newly created object, so add it into the
+        // existing app state
+        setMaterials(Object.assign({}, materials, { [data.id]: data }));
+        // Select our newly created material to edit it.
+        setSelectedMaterial(data.id);
+      })
+      .catch((error) => console.error(error));
+  }
+
+  function updateMaterial(id, field, value) {
+    fetch(`http://localhost:3000/materials/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        [field]: value,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setMaterials(
+          Object.assign({}, materials, {
+            [id]: data,
+          })
+        );
+      })
+      .catch((error) => console.error(error));
+  }
+
+  function deleteMaterial(id) {
+    fetch(`http://localhost:3000/materials/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // Response is the deleted material
+        const _id = data.id;
+        // Create new materials object and remove the returned object from it
+        const newMaterials = Object.assign({}, materials);
+        delete newMaterials[_id];
+        // First, update selected material to be a different material, if any exist
+        const newKeys = Object.keys(newMaterials);
+        if (newKeys.length > 0) setSelectedMaterial(newKeys[0]);
+        else setSelectedMaterial(null);
+        // Then, set new materials in app state
+        setMaterials(newMaterials);
+      })
+      .catch((error) => console.error(error));
+  }
+
+  // On Mount, grab all materials from the API and populate the state with them
+  // NB: adding the empty array as a second argument to useEffect prevents
+  // it from firing on every subsequent state update.
+  useEffect(() => {
+    getAllMaterials();
   }, []);
 
   const materialKeys = Object.keys(materials);
@@ -46,24 +117,7 @@ export default function App() {
         <button
           className="rounded-button blue"
           title="Add"
-          onClick={() => {
-            fetch(`http://localhost:3000/materials`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(defaultMaterial),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                // Data is the newly created object, so add it into the
-                // existing app state
-                setMaterials(Object.assign({}, materials, { [data.id]: data }));
-                // Select our newly created material to edit it.
-                setSelectedMaterial(data.id);
-              })
-              .catch((error) => console.error(error));
-          }}
+          onClick={() => addMaterial()}
         >
           <i className="fas fa-plus"></i>
           Add
@@ -71,28 +125,7 @@ export default function App() {
         <button
           className="rounded-button red"
           title="Delete"
-          onClick={() => {
-            fetch(`http://localhost:3000/materials/${selectedMaterial}`, {
-              method: "DELETE",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                // Response is the deleted material
-                const id = data.id;
-                // Create new materials object and remove the returned object from it
-                const newMaterials = Object.assign({}, materials);
-                delete newMaterials[id];
-                // First, update selected material to be a different material, if any exist
-                const newKeys = Object.keys(newMaterials);
-                if (newKeys.length > 0) setSelectedMaterial(newKeys[0]);
-                // Then, set new materials in app state
-                setMaterials(newMaterials);
-              })
-              .catch((error) => console.error(error));
-          }}
+          onClick={() => deleteMaterial(selectedMaterial)}
         >
           <i className="fas fa-trash"></i>
           Delete
@@ -120,26 +153,13 @@ export default function App() {
           {selectedMaterial && (
             <MaterialForm
               material={materials[selectedMaterial]}
-              updateMaterial={(event) => {
-                fetch(`http://localhost:3000/materials/${selectedMaterial}`, {
-                  method: "PATCH",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({
-                    [event.target.name]: event.target.value,
-                  }),
-                })
-                  .then((res) => res.json())
-                  .then((data) => {
-                    setMaterials(
-                      Object.assign({}, materials, {
-                        [selectedMaterial]: data,
-                      })
-                    );
-                  })
-                  .catch((error) => console.error(error));
-              }}
+              updateMaterial={(event) =>
+                updateMaterial(
+                  selectedMaterial,
+                  event.target.name,
+                  event.target.value
+                )
+              }
             />
           )}
         </div>

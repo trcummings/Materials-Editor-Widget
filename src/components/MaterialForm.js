@@ -1,7 +1,5 @@
 import React from "react";
 
-import useDebounce from "../helpers/useDebounce";
-
 /**
  * Component for showing details of the user.
  *
