@@ -108,7 +108,18 @@ button.rounded-button:disabled:hover {
 }
 
 /* Material List styles */
+.materials-list > p {
+  /* when we have no materials */
+  font-style: italic;
+  text-align: center;
+  border: solid;
+  border-width: 2px;
+  border-color: #565664;
+  background-color: #17171a;
+}
+
 .materials-list > ul {
+  /* when we have at least one material */
   border: solid;
   border-width: 2px;
   border-color: #565664;

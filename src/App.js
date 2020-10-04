@@ -134,20 +134,20 @@ export default function App() {
       </div>
       <div className="materials-editor">
         <div className="materials-list">
-          <ul>
-            {materialKeys.length > 0 ? (
-              materialKeys.map((id) => (
+          {materialKeys.length > 0 ? (
+            <ul>
+              {materialKeys.map((id) => (
                 <MaterialsListItem
                   key={id}
                   material={materials[id]}
                   isSelected={id === selectedMaterial}
                   selectMaterial={setSelectedMaterial}
                 />
-              ))
-            ) : (
-              <p>No Materials</p>
-            )}
-          </ul>
+              ))}
+            </ul>
+          ) : (
+            <p>No Materials</p>
+          )}
           <TotalCost materials={materials} />
         </div>
         <div className="material-display">
