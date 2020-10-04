@@ -126,6 +126,7 @@ export default function App() {
           className="rounded-button red"
           title="Delete"
           onClick={() => deleteMaterial(selectedMaterial)}
+          disabled={materialKeys.length === 0}
         >
           <i className="fas fa-trash"></i>
           Delete

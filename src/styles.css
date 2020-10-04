@@ -83,6 +83,16 @@ button.rounded-button.red {
   background-color: #ff444c;
 }
 
+button.rounded-button:disabled {
+  cursor: default;
+  background-color: #3a3a44;
+  color: #737373;
+}
+
+button.rounded-button:disabled:hover {
+  filter: none;
+}
+
 /* Material Editor Layout */
 .materials-editor {
   display: flex;
