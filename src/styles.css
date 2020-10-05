@@ -122,33 +122,36 @@ button.rounded-button:disabled:hover {
 }
 
 /* Material List styles */
-.materials-list > p {
-  /* when we have no materials */
-  font-style: italic;
-  text-align: center;
-  border: solid;
-  border-width: 2px;
-  border-color: #565664;
-  background-color: #17171a;
-}
-
-.materials-list > ul {
-  /* when we have at least one material */
+.materials-list-box {
   border: solid;
   border-width: 2px;
   border-color: #565664;
   background-color: #17171a;
 
   height: 25em;
+  position: relative;
+}
+
+.materials-list-box > p {
+  /* when we have no materials */
+  font-style: italic;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.materials-list > ul {
+  /* when we have at least one material */
   overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .materials-list-item {
   border: solid;
   border-width: 0px 0px 2px 0px;
   border-color: #565664;
-  padding: 1em;
+  padding: 0.5em 1em;
 
   height: 3em;
 }

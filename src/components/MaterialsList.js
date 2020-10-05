@@ -9,10 +9,16 @@ export default function MaterialsList({
 }) {
   const materialIds = Object.keys(materials);
 
-  if (materialIds.length === 0) return <p>No Materials</p>;
+  if (materialIds.length === 0) {
+    return (
+      <div className="materials-list-box">
+        <p>No Materials</p>
+      </div>
+    );
+  }
 
   return (
-    <ul>
+    <ul className="materials-list-box">
       {materialIds.map((id) => (
         <MaterialsListItem
           key={id}
