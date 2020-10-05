@@ -13,7 +13,7 @@ import React from "react";
  */
 export default function MaterialForm({ material, updateMaterial }) {
   return (
-    <div className="material-form">
+    <div className="material-form group">
       <div className="material-form-field">
         <label>
           Name

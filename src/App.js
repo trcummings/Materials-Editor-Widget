@@ -107,7 +107,6 @@ export default function App() {
             selectedMaterial={selectedMaterial}
             setSelectedMaterial={setSelectedMaterial}
           />
-          <TotalCost materials={materials} />
         </div>
         <div className="material-display">
           {selectedMaterial && (
@@ -124,6 +123,7 @@ export default function App() {
           )}
         </div>
       </div>
+      <TotalCost materials={materials} />
     </div>
   );
 }
