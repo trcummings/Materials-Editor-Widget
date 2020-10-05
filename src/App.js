@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import MaterialForm from "./components/MaterialForm";
-import MaterialsListItem from "./components/MaterialsListItem";
+import MaterialsList from "./components/MaterialsList";
 import TotalCost from "./components/TotalCost";
 
 import getTodaysDate from "./helpers/getTodaysDate";
@@ -14,12 +14,14 @@ const defaultMaterial = {
   deliveryDate: getTodaysDate(),
 };
 
+const API_STRING = "http://localhost:3000/materials";
+
 export default function App() {
   const [materials, setMaterials] = useState({});
   const [selectedMaterial, setSelectedMaterial] = useState(null);
 
   function getAllMaterials() {
-    fetch("http://localhost:3000/materials", {
+    fetch(API_STRING, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +38,7 @@ export default function App() {
   }
 
   function addMaterial() {
-    fetch(`http://localhost:3000/materials`, {
+    fetch(API_STRING, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +57,7 @@ export default function App() {
   }
 
   function updateMaterial(id, field, value) {
-    fetch(`http://localhost:3000/materials/${id}`, {
+    fetch(`${API_STRING}/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -76,7 +78,7 @@ export default function App() {
   }
 
   function deleteMaterial(id) {
-    fetch(`http://localhost:3000/materials/${id}`, {
+    fetch(`${API_STRING}/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -106,13 +108,9 @@ export default function App() {
     getAllMaterials();
   }, []);
 
-  const materialKeys = Object.keys(materials);
-
   return (
     <div>
-      <div name="Title">
-        <h2>Materials</h2>
-      </div>
+      <h2>Materials</h2>
       <div className="material-buttons">
         <button
           className="rounded-button blue"
@@ -126,7 +124,7 @@ export default function App() {
           className="rounded-button red"
           title="Delete"
           onClick={() => deleteMaterial(selectedMaterial)}
-          disabled={materialKeys.length === 0}
+          disabled={Object.keys(materials).length === 0}
         >
           <i className="fas fa-trash"></i>
           Delete
@@ -134,20 +132,11 @@ export default function App() {
       </div>
       <div className="materials-editor">
         <div className="materials-list">
-          {materialKeys.length > 0 ? (
-            <ul>
-              {materialKeys.map((id) => (
-                <MaterialsListItem
-                  key={id}
-                  material={materials[id]}
-                  isSelected={id === selectedMaterial}
-                  selectMaterial={setSelectedMaterial}
-                />
-              ))}
-            </ul>
-          ) : (
-            <p>No Materials</p>
-          )}
+          <MaterialsList
+            materials={materials}
+            selectedMaterial={selectedMaterial}
+            setSelectedMaterial={setSelectedMaterial}
+          />
           <TotalCost materials={materials} />
         </div>
         <div className="material-display">

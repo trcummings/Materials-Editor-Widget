@@ -7,6 +7,7 @@ export default function MaterialsListItem({
 }) {
   return (
     <li
+      title={material.name}
       className={"materials-list-item" + (isSelected ? " selected" : "")}
       onClick={() => selectMaterial(material.id)}
     >
