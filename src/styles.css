@@ -28,6 +28,15 @@ input[type="button"] {
   cursor: pointer;
 }
 
+/* Datepicker */
+input[type="date"] {
+  color: #ffffff;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #ffffff;
+}
+
 /* Always show up/down arrows for number inputs */
 input[type="number"]::-webkit-inner-spin-button {
   opacity: 1;

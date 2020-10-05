@@ -13,4 +13,6 @@ MINOR TODOs:
 
 - add titles to all elements that deserve them
 - number input arrows (NICE TO HAVE)
+- validate form inputs
 - ensure datepicker cannot pick a date prior to the current date
+- debounce inputs

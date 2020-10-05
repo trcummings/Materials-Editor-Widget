@@ -12,8 +12,6 @@ import React from "react";
  * )
  */
 export default function MaterialForm({ material, updateMaterial }) {
-  // const debouncedUpdate = useDebounce(updateMaterial, 40);
-
   return (
     <div className="material-form">
       <div className="material-form-field">
@@ -44,6 +42,7 @@ export default function MaterialForm({ material, updateMaterial }) {
           <input
             name="volume"
             type="number"
+            min="0"
             value={material.volume}
             onChange={updateMaterial}
           />
@@ -55,6 +54,7 @@ export default function MaterialForm({ material, updateMaterial }) {
           <input
             name="cost"
             type="number"
+            min="0"
             value={material.cost}
             onChange={updateMaterial}
           />
