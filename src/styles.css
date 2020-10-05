@@ -149,7 +149,6 @@ button.rounded-button:disabled:hover {
   border-width: 0px 0px 2px 0px;
   border-color: #565664;
   padding: 1em;
-  display: flex;
 
   height: 3em;
 }
@@ -174,12 +173,19 @@ div.material-color {
   padding: 0;
   height: 2em;
   width: 2em;
+  float: left;
 }
 
 div.material-info {
-  margin-left: 0.5em;
+  padding-left: 0.5em;
   display: flex;
   flex-direction: column;
+}
+
+div.material-info > p {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 div.material-info > span {
