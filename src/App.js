@@ -5,20 +5,13 @@ import MaterialsList from "./components/MaterialsList";
 import TotalCost from "./components/TotalCost";
 
 import getTodaysDate from "./helpers/getTodaysDate";
+import makeDefaultMaterial from "./helpers/makeDefaultMaterial";
 import apiCall, {
   API_GET,
   API_POST,
   API_PATCH,
   API_DELETE,
 } from "./helpers/apiCall";
-
-const defaultMaterial = {
-  name: "New Material",
-  cost: 0,
-  volume: 0,
-  color: "#44d7b6",
-  deliveryDate: getTodaysDate(),
-};
 
 export default function App() {
   const [materials, setMaterials] = useState({});
@@ -36,7 +29,7 @@ export default function App() {
   }
 
   function addMaterial() {
-    apiCall(API_POST, defaultMaterial)
+    apiCall(API_POST, makeDefaultMaterial())
       .then((data) => {
         // Data is the newly created object, so add it into the
         // existing app state
