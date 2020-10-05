@@ -5,6 +5,12 @@ import MaterialsList from "./components/MaterialsList";
 import TotalCost from "./components/TotalCost";
 
 import getTodaysDate from "./helpers/getTodaysDate";
+import apiCall, {
+  API_GET,
+  API_POST,
+  API_PATCH,
+  API_DELETE,
+} from "./helpers/apiCall";
 
 const defaultMaterial = {
   name: "New Material",
@@ -14,38 +20,23 @@ const defaultMaterial = {
   deliveryDate: getTodaysDate(),
 };
 
-const API_STRING = "http://localhost:3000/materials";
-
 export default function App() {
   const [materials, setMaterials] = useState({});
   const [selectedMaterial, setSelectedMaterial] = useState(null);
 
   function getAllMaterials() {
-    fetch(API_STRING, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
+    apiCall(API_GET)
       .then((data) => {
         // Set materials
         setMaterials(data);
         // Set selected to first material
         if (!selectedMaterial) setSelectedMaterial(Object.keys(data)[0]);
       })
-      .catch((error) => console.error(error));
+      .catch(console.error);
   }
 
   function addMaterial() {
-    fetch(API_STRING, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(defaultMaterial),
-    })
-      .then((res) => res.json())
+    apiCall(API_POST, defaultMaterial)
       .then((data) => {
         // Data is the newly created object, so add it into the
         // existing app state
@@ -53,38 +44,24 @@ export default function App() {
         // Select our newly created material to edit it.
         setSelectedMaterial(data.id);
       })
-      .catch((error) => console.error(error));
+      .catch(console.error);
   }
 
   function updateMaterial(id, field, value) {
-    fetch(`${API_STRING}/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        [field]: value,
-      }),
-    })
-      .then((res) => res.json())
+    const body = { [field]: value };
+
+    apiCall(API_PATCH, body, id)
       .then((data) => {
-        setMaterials(
-          Object.assign({}, materials, {
-            [id]: data,
-          })
-        );
+        // Pack receieved material into shape of materials state
+        const newMaterial = { [id]: data };
+        // Add it into our materials state
+        setMaterials(Object.assign({}, materials, newMaterial));
       })
-      .catch((error) => console.error(error));
+      .catch(console.error);
   }
 
   function deleteMaterial(id) {
-    fetch(`${API_STRING}/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
+    apiCall(API_DELETE, {}, id)
       .then((data) => {
         // Response is the deleted material
         const _id = data.id;
@@ -98,7 +75,7 @@ export default function App() {
         // Then, set new materials in app state
         setMaterials(newMaterials);
       })
-      .catch((error) => console.error(error));
+      .catch(console.error);
   }
 
   // On Mount, grab all materials from the API and populate the state with them
