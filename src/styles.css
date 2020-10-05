@@ -51,6 +51,10 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 }
 
 /*  Button Styles */
+div.material-buttons {
+  padding-bottom: 1em;
+}
+
 button.rounded-button {
   color: #ffffff;
   margin: 1em 0em 1em 0em;
@@ -105,6 +109,7 @@ button.rounded-button:disabled:hover {
 
 .materials-editor > .materials-list {
   width: 30%;
+  margin-right: 2em;
 }
 
 /* Material List styles */
@@ -124,6 +129,10 @@ button.rounded-button:disabled:hover {
   border-width: 2px;
   border-color: #565664;
   background-color: #17171a;
+
+  height: 25em;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .materials-list-item {
