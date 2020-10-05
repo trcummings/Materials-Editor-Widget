@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TotalCost({ materials }) {
+export default function TotalCost({ materials = [] }) {
   return (
     <div className="total-cost">
       <p>Total Cost: </p>
