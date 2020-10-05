@@ -3,7 +3,9 @@ import React from "react";
 import MaterialsList from "./MaterialsList";
 
 describe("MaterialsList Component", () => {
-  it("Should have a default test in its .test.js file (DELETE LATER)", () => {
-    expect(1).toBe(1);
-  });
+  it.todo("Should render 'No Materials' when no materials are passed in");
+
+  it.todo(
+    "Should render the correct number of MaterialListItems when given materials"
+  );
 });

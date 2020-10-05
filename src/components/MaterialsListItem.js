@@ -5,11 +5,14 @@ export default function MaterialsListItem({
   isSelected,
   selectMaterial,
 }) {
+  // No need to fire selectMaterial function if already selected
+  const onClick = isSelected ? () => {} : () => selectMaterial(material.id);
+
   return (
     <li
       title={material.name}
       className={"materials-list-item" + (isSelected ? " selected" : "")}
-      onClick={() => selectMaterial(material.id)}
+      onClick={onClick}
     >
       <div
         className="material-color"

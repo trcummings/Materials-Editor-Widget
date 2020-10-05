@@ -10,4 +10,6 @@ describe("TotalCost Component", () => {
 
     expect(wrapper.text()).toBe("Total Cost: $0");
   });
+
+  it.todo("Should display the correct Total Cost when given materials");
 });
