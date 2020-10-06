@@ -11,7 +11,7 @@ const app = express();
 const port = 3000;
 
 // Mock materials for pseudo-API calls
-const materials = generateFakeMaterials(3);
+let materials = generateFakeMaterials(3);
 
 // For CORS
 app.use(
