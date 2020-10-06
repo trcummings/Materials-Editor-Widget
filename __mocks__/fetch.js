@@ -1,6 +1,6 @@
 import faker from "faker";
 
-import { makeFakeMaterials } from "../src/helpers/testHelpers";
+import { generateFakeMaterials } from "../src/helpers/testHelpers";
 import {
   API_GET,
   API_POST,
@@ -12,7 +12,7 @@ import {
 export default function fetch(url, req) {
   switch (req.method) {
     case API_GET:
-      const materials = makeFakeMaterials(5);
+      const materials = generateFakeMaterials(5);
 
       return Promise.resolve({
         json: () => Promise.resolve(materials),
