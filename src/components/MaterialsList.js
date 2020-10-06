@@ -3,7 +3,7 @@ import React from "react";
 import MaterialsListItem from "./MaterialsListItem";
 
 export default function MaterialsList({
-  materials,
+  materials = {},
   selectedMaterial,
   setSelectedMaterial,
 }) {
