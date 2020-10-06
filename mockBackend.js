@@ -1,5 +1,11 @@
 const express = require("express");
 const cors = require("cors");
+const faker = require("faker");
+
+const {
+  makeDefaultMaterial,
+  makeDefaultMaterials,
+} = require("./src/helpers/testHelpers");
 
 const app = express();
 const port = 3000;

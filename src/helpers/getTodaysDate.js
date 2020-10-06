@@ -1,5 +1,6 @@
-export default function getTodaysDate() {
-  const date = new Date();
+// write exports in non-ES6 import style so the mockBackend can use it
+
+function formatDateInput(date = new Date()) {
   const yyyy = `${date.getFullYear()}`;
 
   // NB: Date's "getMonth" function is ZERO INDEXED
@@ -11,3 +12,9 @@ export default function getTodaysDate() {
 
   return `${yyyy}-${mm}-${dd}`;
 }
+
+function getTodaysDate() {
+  return formatDateInput();
+}
+
+module.exports = { formatDateInput, getTodaysDate };
