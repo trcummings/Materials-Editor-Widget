@@ -23,7 +23,7 @@ describe("MaterialsList Component", () => {
 
   it("Passes the selected MaterialListItem a 'true' isSelected prop", () => {
     const materials = generateFakeMaterials(5);
-    // pick the first generated material and grab its ID
+    // Pick the first generated material and grab its ID
     const selectedMaterialId = Object.keys(materials)[0];
 
     const component = shallow(
@@ -33,7 +33,7 @@ describe("MaterialsList Component", () => {
       />
     );
 
-    // find the MaterialsListItem with isSelected={true}
+    // Find the MaterialsListItem with isSelected={true}
     const selectedItem = component
       .find(MaterialsListItem)
       .findWhere((n) => n.props().isSelected);
