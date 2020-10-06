@@ -1,4 +1,4 @@
-import getTodaysDate from "./getTodaysDate";
+import { getTodaysDate } from "./getTodaysDate";
 
 export default function makeDefaultMaterial() {
   return {
