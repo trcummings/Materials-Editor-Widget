@@ -12,6 +12,9 @@ import React from "react";
  * )
  */
 export default function MaterialForm({ material, updateMaterial }) {
+  // do not render if we do not have a material
+  if (!material) return null;
+
   return (
     <div className="material-form group">
       <div className="material-form-field">

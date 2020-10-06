@@ -109,18 +109,16 @@ export default function App() {
           />
         </div>
         <div className="material-display">
-          {selectedMaterial && (
-            <MaterialForm
-              material={materials[selectedMaterial]}
-              updateMaterial={(event) =>
-                updateMaterial(
-                  selectedMaterial,
-                  event.target.name,
-                  event.target.value
-                )
-              }
-            />
-          )}
+          <MaterialForm
+            material={materials[selectedMaterial]}
+            updateMaterial={(event) =>
+              updateMaterial(
+                selectedMaterial,
+                event.target.name,
+                event.target.value
+              )
+            }
+          />
         </div>
       </div>
       <TotalCost materials={materials} />
