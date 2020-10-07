@@ -8,24 +8,21 @@ describe("MaterialsListItem Component", () => {
   // generate test material to check against
   const material = generateFakeMaterial();
 
-  it("Should display as selected when told it is selected", () => {
-    const component = shallow(
-      <MaterialsListItem
-        material={material}
-        selectMaterial={() => {}}
-        isSelected
-      />
-    );
+  it("Should display as selected when told it is selected and vice versa", () => {
+    const selectedComponent = shallow(
+      <MaterialsListItem material={material} isSelected />
+    ).find(".selected");
 
-    const wrapper = component.find(".selected");
+    const nonSelectedComponent = shallow(
+      <MaterialsListItem material={material} isSelected={false} />
+    ).find(".selected");
 
-    expect(wrapper).toHaveLength(1);
+    expect(selectedComponent).toHaveLength(1);
+    expect(nonSelectedComponent).toHaveLength(0);
   });
 
   it("Should render the proper material-color component with its given color", () => {
-    const component = shallow(
-      <MaterialsListItem material={material} selectMaterial={() => {}} />
-    );
+    const component = shallow(<MaterialsListItem material={material} />);
 
     // find our material color display
     const wrapper = component.find("div.material-color");
