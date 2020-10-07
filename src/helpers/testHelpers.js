@@ -21,7 +21,7 @@ function generateFakeMaterial() {
     id: faker.random.uuid(),
     name: faker.random.word(),
     color: faker.internet.color(),
-    cost: faker.random.float(),
+    cost: parseFloat(`${faker.random.float()}`.slice(-4)),
     volume: faker.random.number(),
     deliveryDate: formatDateInput(faker.date.future()),
   };
