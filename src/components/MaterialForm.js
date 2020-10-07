@@ -1,18 +1,7 @@
 import React from "react";
 
-/**
- * Component for showing details of the user.
- *
- * @component
- * @example
- * const age = 21
- * const name = 'Jitendra Nirnejak'
- * return (
- *   <User age={age} name={name} />
- * )
- */
-export default function MaterialForm({ material, updateMaterial }) {
-  // do not render if we do not have a material
+export default function MaterialForm({ material, updateMaterial = () => {} }) {
+  // Do not render if we do not have a material
   if (!material) return null;
 
   return (
