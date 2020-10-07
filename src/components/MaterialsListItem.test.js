@@ -5,10 +5,11 @@ import MaterialsListItem from "./MaterialsListItem";
 import { generateFakeMaterial } from "../helpers/testHelpers";
 
 describe("MaterialsListItem Component", () => {
-  // generate test material to check against
+  // Generate test material to check against
   const material = generateFakeMaterial();
 
   it("Should display as selected when told it is selected and vice versa", () => {
+    // Shallowly render both a selected and a non-selected version of the material list item
     const selectedComponent = shallow(
       <MaterialsListItem material={material} isSelected />
     ).find(".selected");
@@ -24,14 +25,16 @@ describe("MaterialsListItem Component", () => {
   it("Should render the proper material-color component with its given color", () => {
     const component = shallow(<MaterialsListItem material={material} />);
 
-    // find our material color display
+    // Find our material color display
     const wrapper = component.find("div.material-color");
+    // Find its style properties
     const materialColorStyle = wrapper.props().style;
 
     expect(materialColorStyle.backgroundColor).toBe(material.color);
   });
 
   it("Should run selectMaterial callback with its material id when clicked and not selected", () => {
+    // Mock the click handler
     const mockSelectMaterial = jest.fn((v) => v).mockName("selectMaterial");
     const component = shallow(
       <MaterialsListItem
@@ -41,15 +44,16 @@ describe("MaterialsListItem Component", () => {
       />
     );
 
-    // click our component
+    // Click our component
     component.simulate("click");
 
-    // check if the function was called with the material id
+    // Check if the function was called with the material id
     const clickResult = mockSelectMaterial.mock.results[0].value;
     expect(clickResult).toBe(material.id);
   });
 
   it("Should not run its selectMaterial callback when selected", () => {
+    // Mock the click handler
     const mockSelectMaterial = jest.fn().mockName("selectMaterial");
     const component = shallow(
       <MaterialsListItem
@@ -59,10 +63,10 @@ describe("MaterialsListItem Component", () => {
       />
     );
 
-    // click our component
+    // Click our component
     component.simulate("click");
 
-    // check how many times the mock function was run
+    // Check how many times the mock function was run
     const numClicks = mockSelectMaterial.mock.results.length;
     expect(numClicks).toBe(0);
   });
