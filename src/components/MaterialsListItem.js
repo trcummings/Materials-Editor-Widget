@@ -19,8 +19,8 @@ import React from "react";
  */
 export default function MaterialsListItem({
   material,
-  isSelected,
-  selectMaterial,
+  isSelected = false,
+  selectMaterial = () => {},
 }) {
   // No need to fire selectMaterial function if already selected
   const onClick = isSelected ? () => {} : () => selectMaterial(material.id);
