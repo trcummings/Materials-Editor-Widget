@@ -17,6 +17,7 @@ export default function App() {
   const [materials, setMaterials] = useState({});
   const [selectedMaterial, setSelectedMaterial] = useState(null);
 
+  // Action functions for GET, POST, PATCH, and DELETE
   function getAllMaterials() {
     apiCall(API_GET)
       .then((data) => {

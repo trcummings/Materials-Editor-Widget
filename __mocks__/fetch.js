@@ -12,10 +12,8 @@ import {
 export default function fetch(url, req) {
   switch (req.method) {
     case API_GET:
-      const materials = generateFakeMaterials(5);
-
       return Promise.resolve({
-        json: () => Promise.resolve(materials),
+        json: () => Promise.resolve(this.materials),
       });
 
     case API_POST:
@@ -35,3 +33,7 @@ export default function fetch(url, req) {
       return Promise.reject("Garbage input for fetch call");
   }
 }
+
+// Generate the test materials at runtime so we can check them against
+// App.js's GET request
+fetch.materials = generateFakeMaterials(5);
