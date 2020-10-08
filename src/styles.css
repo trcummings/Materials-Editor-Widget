@@ -210,9 +210,6 @@ div.material-display {
   background-color: #1d1d21;
 }
 
-div.material-form {
-}
-
 div.material-form-field {
   padding: 1em;
   float: left;
@@ -237,10 +234,14 @@ div.material-form-field > label > input[type="number"] {
 }
 
 /* Total Cost */
-.total-cost {
+div.total-cost {
   /* width set to algin with material items list */
   width: calc(25% - 2em);
   padding: 1em 0em 1em 0em;
   display: flex;
   justify-content: space-between;
+}
+
+div.total-cost > p:first-of-type {
+  padding-right: 1em;
 }
