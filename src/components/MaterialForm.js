@@ -4,6 +4,10 @@ export default function MaterialForm({ material, updateMaterial = () => {} }) {
   // Do not render if we do not have a material
   if (!material) return null;
 
+  function wrappedUpdate(event) {
+    updateMaterial(material.id, event.target.name, event.target.value);
+  }
+
   return (
     <div className="material-form group">
       <div className="material-form-field">
@@ -13,7 +17,7 @@ export default function MaterialForm({ material, updateMaterial = () => {} }) {
             name="name"
             type="text"
             value={material.name}
-            onChange={updateMaterial}
+            onChange={wrappedUpdate}
           />
         </label>
       </div>
@@ -24,7 +28,7 @@ export default function MaterialForm({ material, updateMaterial = () => {} }) {
             name="color"
             type="color"
             value={material.color}
-            onChange={updateMaterial}
+            onChange={wrappedUpdate}
           />
         </label>
       </div>
@@ -36,7 +40,7 @@ export default function MaterialForm({ material, updateMaterial = () => {} }) {
             type="number"
             min="0"
             value={material.volume}
-            onChange={updateMaterial}
+            onChange={wrappedUpdate}
           />
         </label>
       </div>
@@ -48,7 +52,7 @@ export default function MaterialForm({ material, updateMaterial = () => {} }) {
             type="number"
             min="0"
             value={material.cost}
-            onChange={updateMaterial}
+            onChange={wrappedUpdate}
           />
         </label>
       </div>
@@ -59,7 +63,7 @@ export default function MaterialForm({ material, updateMaterial = () => {} }) {
             name="deliveryDate"
             type="date"
             value={material.deliveryDate}
-            onChange={updateMaterial}
+            onChange={wrappedUpdate}
           />
         </label>
       </div>

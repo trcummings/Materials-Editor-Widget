@@ -18,12 +18,14 @@ import React from "react";
  * @author [Thomsen Cummings](https://github.com/trcummings)
  */
 export default function MaterialsListItem({
-  material,
+  material = {},
   isSelected = false,
   selectMaterial = () => {},
 }) {
   // No need to fire selectMaterial function if already selected
   const onClick = isSelected ? () => {} : () => selectMaterial(material.id);
+  // In the unlikely event we don't have a material, we don't want to hard crash
+  const volume = material.volume || "";
 
   return (
     <li
@@ -38,7 +40,7 @@ export default function MaterialsListItem({
       <div className="material-info">
         <p>{material.name}</p>
         <span>
-          {material.volume.toLocaleString()} m<sup>3</sup>
+          {volume.toLocaleString()} m<sup>3</sup>
         </span>
       </div>
     </li>

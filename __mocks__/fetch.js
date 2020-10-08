@@ -13,27 +13,39 @@ export default function fetch(url, req) {
   switch (req.method) {
     case API_GET:
       return Promise.resolve({
-        json: () => Promise.resolve(this.materials),
+        json: () => Promise.resolve(generateFakeMaterials(5)),
       });
 
     case API_POST:
-      const id = faker.random.uuid();
-
       return Promise.resolve({
-        json: () => Promise.resolve(Object.assign({}, req.body, { id })),
+        json: () =>
+          Promise.resolve(
+            Object.assign({}, JSON.parse(req.body), {
+              id: faker.random.uuid(),
+            })
+          ),
       });
 
     case API_PATCH:
-    case API_DELETE:
       return Promise.resolve({
-        json: () => Promise.resolve(req.body),
+        json: () => Promise.resolve(JSON.parse(req.body)),
+      });
+
+    case API_DELETE:
+      // get id from url
+      const splitUrl = url.split("/");
+      const id = splitUrl[splitUrl.length - 1];
+
+      return Promise.resolve({
+        json: () =>
+          Promise.resolve(
+            Object.assign({}, JSON.parse(req.body), {
+              id,
+            })
+          ),
       });
 
     default:
       return Promise.reject("Garbage input for fetch call");
   }
 }
-
-// Generate the test materials at runtime so we can check them against
-// App.js's GET request
-fetch.materials = generateFakeMaterials(5);

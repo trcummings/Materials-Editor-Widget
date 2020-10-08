@@ -43,11 +43,12 @@ export default function App() {
 
   function updateMaterial(id, field, value) {
     const body = { [field]: value };
+    const oldMaterial = materials[id];
 
     apiCall(API_PATCH, body, id)
       .then((data) => {
         // Pack receieved material into shape of materials state
-        const newMaterial = { [id]: data };
+        const newMaterial = { [id]: { ...oldMaterial, ...data } };
         // Add it into our materials state
         setMaterials(Object.assign({}, materials, newMaterial));
       })
@@ -86,7 +87,7 @@ export default function App() {
         <button
           className="rounded-button blue"
           title="Add"
-          onClick={() => addMaterial()}
+          onClick={addMaterial}
         >
           <i className="fas fa-plus"></i>
           Add
@@ -112,13 +113,7 @@ export default function App() {
         <div className="material-display">
           <MaterialForm
             material={materials[selectedMaterial]}
-            updateMaterial={(event) =>
-              updateMaterial(
-                selectedMaterial,
-                event.target.name,
-                event.target.value
-              )
-            }
+            updateMaterial={updateMaterial}
           />
         </div>
       </div>
