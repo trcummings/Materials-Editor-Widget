@@ -25,7 +25,7 @@ describe("MaterialForm Component", () => {
       if (key === "id") return;
 
       // Test each call by making a new material and using its field
-      const field = component.find(`input[name="${key}"]`);
+      const field = component.find(`[name="${key}"]`);
       const newMaterial = generateFakeMaterial();
       const newField = newMaterial[key];
 
@@ -60,7 +60,7 @@ describe("MaterialForm Component", () => {
     );
 
     // Test cost field
-    const costField = component.find('input[name="cost"]');
+    const costField = component.find('[name="cost"]');
     // Simulate change event
     const fakeCostEvent = { target: { name: "cost", value: -1 } };
     costField.prop("onChange")(fakeCostEvent);
@@ -68,7 +68,7 @@ describe("MaterialForm Component", () => {
     expect(newMaterial.cost).toBe(1);
 
     // Test volume field
-    const volumeField = component.find('input[name="volume"]');
+    const volumeField = component.find('[name="volume"]');
     // Simulate change event
     const fakeVolumeEvent = { target: { name: "volume", value: -1 } };
     volumeField.prop("onChange")(fakeVolumeEvent);
