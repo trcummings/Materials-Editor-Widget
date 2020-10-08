@@ -10,7 +10,7 @@ describe("TotalCost Component", () => {
     const component = shallow(<TotalCost />);
     const wrapper = component.find(".total-cost");
 
-    expect(wrapper.text()).toBe("Total Cost: $0");
+    expect(wrapper.text()).toBe("Total Cost: $0.00");
   });
 
   it("Should display the correct Total Cost when given materials", () => {
@@ -21,11 +21,7 @@ describe("TotalCost Component", () => {
     // Regex for matching floats in text strings
     const regex = /[+-]?\d+(\.\d+)?/g;
     // Grab string from internal text, match on regex, and parse it
-    const renderedTotalCost = wrapper
-      .text()
-      .match(regex)
-      .map((t) => parseFloat(t))[0];
-
+    const renderedTotalCost = wrapper.text().match(regex)[0];
     // Calculate the total cost from the helper function
     const totalCost = calculateTotalCost(materials);
 

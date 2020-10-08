@@ -1,3 +1,4 @@
+// returns String
 export default function calculateTotalCost(materials = {}) {
   // calculate the total
   const total = Object.keys(materials).reduce(
