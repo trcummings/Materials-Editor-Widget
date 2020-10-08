@@ -1,0 +1,14 @@
+/* Material Editor Layout */
+.materials-editor {
+  display: flex;
+  width: 100%;
+}
+
+.materials-editor > .material-display {
+  width: 50%;
+}
+
+.materials-editor > .materials-list {
+  width: 25%;
+  margin-right: 2em;
+}

@@ -1,0 +1,50 @@
+/*  Button Styles */
+input[type="button"] {
+  cursor: pointer;
+}
+
+div.material-buttons {
+  padding-bottom: 1em;
+}
+
+button.rounded-button {
+  color: #ffffff;
+  margin: 1em 0em 1em 0em;
+  padding: 0.5em 1em 0.5em 1em;
+  border-radius: 2em;
+}
+
+button:hover {
+  filter: brightness(85%);
+}
+
+button:active {
+  filter: brightness(70%);
+}
+
+button.rounded-button + button.rounded-button {
+  /* add margin between buttons for all except for the first */
+  margin-left: 0.5em;
+}
+
+button.rounded-button > i.fas {
+  padding-right: 0.5em;
+}
+
+button.rounded-button.blue {
+  background-color: #0075db;
+}
+
+button.rounded-button.red {
+  background-color: #ff444c;
+}
+
+button.rounded-button:disabled {
+  cursor: default;
+  background-color: #3a3a44;
+  color: #737373;
+}
+
+button.rounded-button:disabled:hover {
+  filter: none;
+}

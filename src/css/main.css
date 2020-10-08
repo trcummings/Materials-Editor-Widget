@@ -1,0 +1,21 @@
+/* Main Styles */
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #29292f;
+  color: #dfdfe0;
+  padding: 2em;
+  margin: 0 10%;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: bolder;
+}
+
+label {
+  font-weight: bold;
+}
+
+label > input {
+  font-weight: normal;
+}

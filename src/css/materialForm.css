@@ -1,0 +1,88 @@
+/* Material Form */
+div.material-display {
+  padding: 1em;
+  border-radius: 0.5em;
+  background-color: #1d1d21;
+}
+
+div.material-form-field {
+  position: relative;
+  padding: 1em;
+  float: left;
+  width: calc(50% - 2em);
+}
+
+div.material-form-field > label > input {
+  display: block;
+  background-color: #393942;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  width: calc(100% - 1em);
+  margin-top: 0.5em;
+}
+
+div.material-form-field > label > input[type="color"] {
+  background-color: transparent;
+}
+
+div.material-form-field > label > input[type="number"] {
+  text-align: right;
+}
+
+/* Datepicker */
+
+/* Replace native date arrow with fontawesome icon */
+input[type="date"]:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  font-size: 1em;
+  content: "\f073";
+  color: #ffffff;
+  padding: 0 5px;
+}
+
+/* make the native arrow invisible and stretch it field so you can click
+on the right side to trigger the native datepicker */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  color: transparent;
+  background: transparent;
+}
+
+/* Always show up/down arrows for number inputs */
+input[type="number"]::-webkit-inner-spin-button {
+  opacity: 1;
+}
+
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0;
+}
+
+/* Rounded Color Picker */
+input[type="color"] {
+  cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  margin-top: -0.5em;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  height: 2.5em;
+  width: 2.5em;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  /* margin-top: -0.5em; */
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  height: 2.5em;
+  width: 2.5em;
+}

@@ -1,0 +1,75 @@
+/* Material List styles */
+.materials-list-box {
+  border: solid;
+  border-width: 2px;
+  border-color: #565664;
+  background-color: #17171a;
+
+  height: 25em;
+  position: relative;
+}
+
+.materials-list-box > p {
+  /* when we have no materials */
+  font-style: italic;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.materials-list > ul {
+  /* when we have at least one material */
+  overflow-y: auto;
+}
+
+.materials-list-item {
+  border: solid;
+  border-width: 0px 0px 2px 0px;
+  border-color: #565664;
+  padding: 0.5em 1em;
+
+  height: 3em;
+}
+
+.materials-list-item.selected {
+  background-color: #000344;
+}
+
+.materials-list-item:not(.selected) {
+  /* clickable list item */
+  cursor: pointer;
+}
+
+.materials-list-item:not(.selected):hover {
+  filter: brightness(85%);
+}
+
+div.material-color {
+  margin-top: 0.25em;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  height: 2em;
+  width: 2em;
+  float: left;
+}
+
+div.material-info {
+  padding-left: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+div.material-info > p {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+div.material-info > span {
+  margin-top: -0.1em;
+  font-size: 0.8em;
+  font-weight: lighter;
+}
