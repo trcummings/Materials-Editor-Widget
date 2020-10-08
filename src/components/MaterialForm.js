@@ -1,15 +1,31 @@
 import React from "react";
 
+function validateField(name, value) {
+  switch (name) {
+    case "volume":
+    case "cost":
+      // Volume and cost must be non-negative numbers no matter what
+      return Math.abs(value);
+
+    default:
+      return value;
+  }
+}
+
 export default function MaterialForm({ material, updateMaterial = () => {} }) {
   // Do not render if we do not have a material
   if (!material) return null;
 
+  // simple function to decompose the event and validate field input
   function wrappedUpdate(event) {
-    updateMaterial(material.id, event.target.name, event.target.value);
+    const { name, value } = event.target;
+    const newValue = validateField(name, value);
+
+    updateMaterial(material.id, name, newValue);
   }
 
   return (
-    <div className="material-form group">
+    <form className="material-form group">
       <div className="material-form-field">
         <label>
           Name
@@ -67,6 +83,6 @@ export default function MaterialForm({ material, updateMaterial = () => {} }) {
           />
         </label>
       </div>
-    </div>
+    </form>
   );
 }
