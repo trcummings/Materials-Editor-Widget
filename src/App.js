@@ -1,3 +1,11 @@
+/**
+ * The main component. Manages application state with React hooks, provides
+ * materials data to all subcomponents, and provides callback handlers
+ * to handle CRUD actions. It also provides the general layout of the app.
+ *
+ * @version 1.0.0
+ * @author [Thomsen Cummings](https://github.com/trcummings)
+ */
 import React, { useState, useEffect } from "react";
 
 import MaterialForm from "./components/MaterialForm";
@@ -14,6 +22,7 @@ import apiCall, {
 } from "./helpers/apiCall";
 
 export default function App() {
+  // Create state variables and update functions with useState hooks
   const [materials, setMaterials] = useState({});
   const [selectedMaterial, setSelectedMaterial] = useState(null);
 
@@ -73,9 +82,12 @@ export default function App() {
       .catch(console.error);
   }
 
-  // On Mount, grab all materials from the API and populate the state with them
-  // NB: adding the empty array as a second argument to useEffect prevents
-  // it from firing on every subsequent state update.
+  /**
+   * On Mount, grab all materials from the API and populate the state.
+   *
+   * NB: adding the empty array as a second argument to useEffect prevents
+   * it from firing on every subsequent state update.
+   */
   useEffect(() => {
     getAllMaterials();
   }, []);

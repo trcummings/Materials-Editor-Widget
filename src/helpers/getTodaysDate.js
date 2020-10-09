@@ -1,7 +1,7 @@
 /**
  * File that contains helpers for date inputs and date strings
  *
- * @version 1.0.1
+ * @version 1.0.0
  * @author [Thomsen Cummings](https://github.com/trcummings)
  */
 

@@ -1,14 +1,3 @@
-import React from "react";
-
-/**
- * @typedef {import('../helpers/makeDefaultMaterial.js').Material} Material
- *
- * @typedef {Object} Props
- * @param {Material} material - Material given for list item to render
- * @param {boolean} isSelected - Lets list item know if it's selected or not
- * @param {function} selectMaterial - Callback function that takes a Material.id
- */
-
 /**
  * List item that displays a Material's name, volume, and chosen color.
  * When clicked, it fires a click handler that passes the material.id
@@ -16,6 +5,27 @@ import React from "react";
  *
  * @version 1.0.0
  * @author [Thomsen Cummings](https://github.com/trcummings)
+ */
+import React from "react";
+
+/**
+ * Material typedef
+ *
+ * @typedef {Object} Material
+ * @property {string} name - Name of material
+ * @property {number} cost - Cost per cubic meter of material
+ * @property {number} volume - Volume in cubic meters of material
+ * @property {string} color - Chosen color for material display
+ * @property {string} deliveryDate - Volume in cubic meters of material
+ */
+
+/**
+ * MaterialsListItem
+ *
+ * @param {Props} props Component props
+ * @param {Material} props.material - Material given for list item to render
+ * @param {boolean} props.isSelected - Lets list item know if it's selected or not
+ * @param {function} props.selectMaterial - Callback function that takes a Material.id
  */
 export default function MaterialsListItem({
   material = {},

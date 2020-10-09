@@ -1,7 +1,7 @@
 /**
  * File that contains helpers for generating test data with Faker.js
  *
- * @version 1.0.1
+ * @version 1.0.0
  * @author [Thomsen Cummings](https://github.com/trcummings)
  */
 
@@ -15,6 +15,7 @@ const { formatDateInput } = require("./getTodaysDate");
 
 /**
  * Material typedef
+ *
  * @typedef {Object} Material
  * @property {string} name - Name of material
  * @property {number} cost - Cost per cubic meter of material
@@ -22,6 +23,7 @@ const { formatDateInput } = require("./getTodaysDate");
  * @property {string} color - Chosen color for material display
  * @property {string} deliveryDate - Volume in cubic meters of material
  */
+
 /**
  * Function to generate a dictionary of fake materials keyed by id for
  * testing purposes. returns an empty dictionary if given 0 numMaterials

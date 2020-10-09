@@ -1,7 +1,7 @@
 /**
  * File that contains API call helper for all fetch requests
  *
- * @version 1.0.1
+ * @version 1.0.0
  * @author [Thomsen Cummings](https://github.com/trcummings)
  */
 

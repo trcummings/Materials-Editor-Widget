@@ -1,7 +1,14 @@
+/**
+ * File that contains helpers to create a generic new material
+ *
+ * @version 1.0.0
+ * @author [Thomsen Cummings](https://github.com/trcummings)
+ */
 import { getTodaysDate } from "./getTodaysDate";
 
 /**
  * Material typedef
+ *
  * @typedef {Object} Material
  * @property {string} name - Name of material
  * @property {number} cost - Cost per cubic meter of material

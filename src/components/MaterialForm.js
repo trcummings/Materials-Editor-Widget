@@ -1,5 +1,31 @@
+/**
+ * Simple functional form for editing a material, or rendering nothing
+ * if not given a material
+ *
+ * @version 1.0.0
+ * @author [Thomsen Cummings](https://github.com/trcummings)
+ */
 import React from "react";
 
+/**
+ * Material typedef
+ *
+ * @typedef {Object} Material
+ * @property {string} name - Name of material
+ * @property {number} cost - Cost per cubic meter of material
+ * @property {number} volume - Volume in cubic meters of material
+ * @property {string} color - Chosen color for material display
+ * @property {string} deliveryDate - Volume in cubic meters of material
+ */
+
+/**
+ * Dead simple form field validation function to pass along properly formatted
+ * input to our updateMaterial function.
+ *
+ * @param {string} name -- Name of field (named property of Material)
+ * @param {string|number} value - Updated value of field
+ * @returns {string|number}
+ */
 function validateField(name, value) {
   switch (name) {
     case "volume":
@@ -12,6 +38,13 @@ function validateField(name, value) {
   }
 }
 
+/**
+ * MaterialForm
+ *
+ * @param {Props} props Component props
+ * @param {Material} props.material - The material we are currently editing
+ * @param {function} props.updateMaterial - Callback function that takes a Material.id, the name of the field in question, and its updated value
+ */
 export default function MaterialForm({ material, updateMaterial = () => {} }) {
   // Do not render if we do not have a material
   if (!material) return null;
