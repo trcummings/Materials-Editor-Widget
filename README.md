@@ -71,13 +71,13 @@ During this project, I made economical decisions about what was worth implementi
 
 3. Skeletonizing - This took slightly longer than I expected because I opted to use a React feature I was only passingly familiar with called "hooks". But I figured it would make the code clean and have vanishingly slim room for error (I was right). The tradeoff is that it made testing much, much harder.
 
-4. Styling - I'll be honest, I had to brush off some dust, but it came back quick.
+4. Styling - I'll be honest, I had to brush off some dust, but it came back quick. However, without being given ratios in the mocks I had to do a lot of guesswork, and couldn't quite reach "pixel perfection".
 
 5. Formalizing - I wanted genuine frontend-backend interaction for this, so I wrote a mock backend, an APO call helper, and a few little helpers for generating test data. This added some extra time.
 
 6. Tests - Hoo boy. Not only had I not worked with Jest and Enzyme before, but I hadn't written test suites in a while, nor had I much experience with Unit tests. A couple of those hours were spent reading and familiarizing myself with conventions, the API docs of both Jest and Enzyme. Then, I hit this insane snag for daring to use a modern React convention (Hooks) with a testing helper written by someone other than Facebook (Enzyme). Every project has a bug or implementation snag that makes you want to eat your keyboard. Not to mention I had some lurking bugs in my mocked implementation of the fetch API. This all should have taken 2.5 hours tops.
 
-7. Documentation - Not much to say here just that I wasn't very familiar with writing in a JSDoc convention before this.
+7. Documentation - I wasn't very familiar with writing in a JSDoc convention before this so I had to do a bunch of reading. `npm run docs` does not generate a nice and comprehensive website either. If I could start over, or if I had more time, I would modify it to fit React "Styleguidist" convention.
 
 8. Tweaking - Can't help it, I'd sit down at my workstation, notice some little thing, and futz with it for anywhere from 5 minutes to 15. And I did this sometimes multiple times a day.
 
