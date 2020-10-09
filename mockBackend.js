@@ -14,11 +14,16 @@ const port = 3000;
 let materials = generateFakeMaterials(3);
 
 // For CORS
-app.use(
-  cors({
-    origin: "http://localhost:8080",
-  })
-);
+app.use(cors());
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+
 // For parsing application/json
 app.use(express.json());
 // For parsing application/x-www-form-urlencoded
