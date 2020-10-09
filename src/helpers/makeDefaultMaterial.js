@@ -11,12 +11,10 @@ import { getTodaysDate } from "./getTodaysDate";
  */
 
 /**
- * Creates a generic Material to be used to create a new one via POST request.
+ * Creates a generic Material (to be used to create a new one via POST request).
  *
  * @function
- *
  * @returns {Material}
- *
  * @example
  * const newMaterial = makeDefaultMaterial();
  */
