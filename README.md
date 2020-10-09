@@ -100,7 +100,7 @@ It's a lot of little questions like this. I may still have a few lingering ones 
 
 ## Tradeoffs I Made Along the Way
 
-For the purposes of the project I tried to use as few prefigured dependencies as possible, but the three biggest tradeoffs I made were this:
+For the purposes of the project I tried to use as few prefigured dependencies as possible, but the two biggest tradeoffs I made were this:
 
 - I did not implement a customized numerical input field to make the UI fully consistent with the mocks.
 
