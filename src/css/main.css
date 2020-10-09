@@ -10,6 +10,7 @@ body {
 h2 {
   font-size: 2em;
   font-weight: bolder;
+  padding-bottom: 0.5em;
 }
 
 label {
