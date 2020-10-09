@@ -67,7 +67,7 @@ During this project, I made economical decisions about what was worth implementi
 
 1. Planning - Once you work with React for a while, you never forget how to quickly break things down into component structure. I stared at the mocks for about 5 minutes then wrote for about 10 in chicken-scratch onto a blank piece of paper every single component, their required data, all their required callback functions, and the general state of the app. It helped a lot that there were no routes to think about, or any intermediary datatypes. The mocks were opaque with what was required.
 
-2. Build - Babel is a breeze. Webpack is very straightforward these days. Not like it was 2015.
+2. Build - Babel is a breeze. Webpack is very straightforward these days. Not like it was in 2015.
 
 3. Skeletonizing - This took slightly longer than I expected because I opted to use a React feature I was only passingly familiar with called "hooks". But I figured it would make the code clean and have vanishingly slim room for error (I was right). The tradeoff is that it made testing much, much harder.
 
@@ -95,6 +95,7 @@ You'll notice that the most common theme with these is "I was building functiona
 - How should the materials in the list get sorted? By name? By delivery date?
 - What's going on with the spacing in the "Total Cost" section? Is it constrained to the list of materials?
 - What level of precision should we be working with for the cost? Two decimal places max?
+- Can you select delivery dates that are in the past?
 
 It's a lot of little questions like this. I may still have a few lingering ones around changes I would need to make to easily port this into an existing repo, but as far as I could tell that's out of the scope of this exercise.
 
@@ -104,9 +105,9 @@ For the purposes of the project I tried to use as few prefigured dependencies as
 
 - I did not implement a customized numerical input field to make the UI fully consistent with the mocks, nor did I write extensive input validation.
 
-Given more time I would be more than happy to, but within the constraints of the assignment, I decided against it. Right out of the gates I had decided that if I couldn't style webkit's date-picker and number field, I was not going to bother with it. Luckily, replacing the icon for the date-picker was relatively easy. Unfortunately, all I could easily do with the number input was to always show the arrows, and add a small justification between the numbers and the arrows to provide some padding. In my experience, this could take a full day of work.
+Given more time I would be more than happy to, but within the constraints of the assignment, I decided against it. Right out of the gates I had decided that if I couldn't style webkit's date-picker and number field, I was not going to bother with it. Luckily, replacing the icon for the date-picker was relatively easy. Unfortunately, all I could easily do with the number input was to always show the arrows, and add a small justification between the numbers and the arrows to provide some padding. In my experience with React, this could take more than one full day of work to create a robust and customizable one at parity with the HTML standard.
 
-With respect to input validation and form handling in general, when I started out with programming, they told me "Never roll your own crypto" (unless you're a cryptographer). To that I would like to add "Don't bother to write your own form handlers" (unless it's your job). Just use something like Formik.
+With respect to input validation and form handling in general, when I started out with programming, they told me "Never roll your own crypto" (unless you're a cryptographer). To that I would like to add "Don't bother to write your own form handlers" (unless it's your job). If you're using React, just use something like Formik.
 
 - I did not implement true error handling if the backend is down.
 
