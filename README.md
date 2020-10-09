@@ -15,21 +15,21 @@
 ### In Production
 
 1. run `npm install`
-2. run `node mockBackend.js` -- This will start up the mock backend server.
-3. In a new tab, run `npm run prod` -- This will build the project in production mode with Webpack.
+2. run `node mockBackend.js` — This will start up the mock backend server.
+3. In a new tab, run `npm run prod` — This will build the project in production mode with Webpack.
 4. Open `index.html` in the dist/ folder, and et voilà!
 
 ### In Development
 
-1. run `npm install` -- You can skip this step if you've already installed the node modules.
+1. run `npm install` — You can skip this step if you've already installed the node modules.
 2. run `node mockBackend.js`
-3. run `npm run dev` -- This will start up a Webpack dev server and host the build on `localhost:8080`.
+3. run `npm run dev` — This will start up a Webpack dev server and host the build on `localhost:8080`.
 
 ### Run the Test Suite
 
 **NB: This test suite will only run on Node Version 10 or later**, which I believe is an issue with Jest. For the purposes of development I have been using Node Version 12.14.1.
 
-1. run `npm run test` -- This will run the Jest test suite, set up the Enzyme adapter, and run through all of the tests.
+1. run `npm run test` — This will run the Jest test suite, set up the Enzyme adapter, and run through all of the tests.
 2. Look at all that green!
 
 ## How Much Time I Spent on It (and Why)
