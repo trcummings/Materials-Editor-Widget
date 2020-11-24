@@ -1,7 +1,5 @@
 # Example Material Editor Widget
 
-#### Hello, welcome to Thomsen Cummings' official submission to Cesium's project phase of the application pipeline.
-
 ### What is This?
 
 Hello, I am Thomsen Cummings, and this is a basic showcase of my current familiarity of web development paradigms. The codebase is entirely from an application phase of a project pipeline I completed in October 2020 and repurposed to show recent web dev work to potential employers. This README contains instructions on how to run the repo, as well as a technical breakdown of the process.
