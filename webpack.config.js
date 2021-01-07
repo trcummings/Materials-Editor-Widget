@@ -2,6 +2,8 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
+const { PORT } = require("./config");
+
 module.exports = {
   entry: "./src/index.js",
   output: {
@@ -39,7 +41,7 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-        PORT: JSON.stringify(process.env.PORT || 3000),
+        PORT: JSON.stringify(PORT),
       },
     }),
   ],
