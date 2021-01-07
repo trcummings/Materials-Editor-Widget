@@ -4,9 +4,7 @@
  * @version 1.0.0
  * @author [Thomsen Cummings](https://github.com/trcummings)
  */
-import { PORT } from "../constants";
-
-export const API_STRING = `http://localhost:${PORT}/materials`;
+export const API_STRING = `http://localhost:${process.env.PORT}/materials`;
 
 export const API_GET = "GET";
 export const API_POST = "POST";

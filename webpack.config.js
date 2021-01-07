@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
@@ -34,6 +35,9 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
+    }),
+    new webpack.DefinePlugin({
+      "process.env.PORT": `${process.env.PORT || 3000}`,
     }),
   ],
 };
