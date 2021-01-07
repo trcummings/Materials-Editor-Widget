@@ -7,7 +7,7 @@
 /coverage
 
 # production
-/dist/*
+/public/*
 /docs/*
 
 # misc
