@@ -9,7 +9,7 @@ const {
 } = require("./src/helpers/testHelpers");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Mock materials for pseudo-API calls
 let materials = generateFakeMaterials(3);
