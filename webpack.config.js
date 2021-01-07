@@ -45,4 +45,11 @@ module.exports = {
       },
     }),
   ],
+  devServer: {
+    index: "", // specify to enable root proxying
+    proxy: {
+      context: () => true,
+      target: `http://localhost:${PORT}`,
+    },
+  },
 };

@@ -22,8 +22,7 @@ export const API_DELETE = "DELETE";
  */
 export default function apiCall(method, body = {}, id) {
   // If given an ID, append it as a URL param
-  const baseApiString = `http://localhost:${process.env.PORT}/materials`;
-  const apiString = id ? `${baseApiString}/${id}` : baseApiString;
+  const apiString = id ? `materials/${id}` : "/materials";
 
   // Create a request object for the Fetch API
   const req = {
