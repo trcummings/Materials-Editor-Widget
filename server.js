@@ -3,13 +3,14 @@ const path = require("path");
 const cors = require("cors");
 const faker = require("faker");
 
+const { PORT } = require("./src/constants");
 const {
   generateFakeMaterial,
   generateFakeMaterials,
 } = require("./src/helpers/testHelpers");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = PORT;
 
 // Mock materials for pseudo-API calls
 let materials = generateFakeMaterials(3);
