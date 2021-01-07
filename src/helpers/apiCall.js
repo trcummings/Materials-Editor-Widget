@@ -4,7 +4,6 @@
  * @version 1.0.0
  * @author [Thomsen Cummings](https://github.com/trcummings)
  */
-export const API_STRING = `http://localhost:${process.env.PORT}/materials`;
 
 export const API_GET = "GET";
 export const API_POST = "POST";
@@ -23,7 +22,8 @@ export const API_DELETE = "DELETE";
  */
 export default function apiCall(method, body = {}, id) {
   // If given an ID, append it as a URL param
-  const apiString = id ? `${API_STRING}/${id}` : API_STRING;
+  const baseApiString = `http://localhost:${process.env.PORT}/materials`;
+  const apiString = id ? `${baseApiString}/${id}` : baseApiString;
 
   // Create a request object for the Fetch API
   const req = {

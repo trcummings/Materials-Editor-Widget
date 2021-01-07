@@ -37,7 +37,10 @@ module.exports = {
       filename: "./index.html",
     }),
     new webpack.DefinePlugin({
-      "process.env.PORT": `${process.env.PORT || 3000}`,
+      "process.env": {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        PORT: JSON.stringify(process.env.PORT || 3000),
+      },
     }),
   ],
 };
