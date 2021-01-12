@@ -14,6 +14,10 @@ The purpose of this widget is to organize materials for delivery to a constructi
 - Jest, Enzyme, and Faker.js for testing
 - JSDoc for documentation
 
+[Live Here!][heroku]
+
+[heroku]: https://materials-editor-widget.herokuapp.com/
+
 ## How to Run
 
 ### In Production
@@ -21,13 +25,12 @@ The purpose of this widget is to organize materials for delivery to a constructi
 1. run `npm install`
 2. run `node server.js` — This will start up the mock backend server.
 3. In a new tab, run `npm run prod` — This will build the project in production mode with Webpack.
-4. Open `localhost:3000` in your browser, and et voilà!
+4. Open `localhost:5000` in your browser, and et voilà!
 
 ### In Development
 
 1. run `npm install` — You can skip this step if you've already installed the node modules.
-2. run `node server.js`
-3. run `npm run dev` — This will start up a Webpack dev server and host the build on `localhost:8080`.
+2. run `npm run dev` — This concurrently run the server and start up a Webpack dev server to host the build on `localhost:8080`.
 
 ### Run the Test Suite
 
