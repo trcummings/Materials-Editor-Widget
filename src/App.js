@@ -22,10 +22,10 @@ import apiCall, {
   API_DELETE,
 } from "./helpers/apiCall";
 
-export default function App() {
+export const App = () => {
   // Create state variables and update functions with useState hooks
   const [materials, setMaterials] = useState({});
-  const [selectedMaterial, setSelectedMaterial] = useState(null);
+  const [selectedMaterial, setSelectedMaterial] = useState('');
 
   // Action functions for GET, POST, PATCH, and DELETE
   function getAllMaterials() {

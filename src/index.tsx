@@ -1,5 +1,5 @@
 /**
- * The entry point for Webpack compilation. Finds the "root" element in
+ * The entry point for compilation. Finds the "root" element in
  * the index.html file and renders all React components inside it.
  *
  * @version 1.0.1
@@ -9,7 +9,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import "./styles.css";
-import App from "./App";
+import { App } from "./App";
 
 /**
  * Arguably you don't need to wait form DOMContentLoaded, but rendering
@@ -21,5 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!element) throw new Error(`Couldn't find element with id: ${id}`);
 
-  ReactDOM.render(<App />, element);
+  ReactDOM.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  element
+  );
 });
