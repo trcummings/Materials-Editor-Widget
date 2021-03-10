@@ -10,7 +10,7 @@ import React, { useState, useEffect } from "react";
 
 import MaterialForm from "./components/MaterialForm";
 import MaterialsList from "./components/MaterialsList";
-import TotalCost from "./components/TotalCost";
+import { TotalCost } from "./components/TotalCost";
 
 import { makeDefaultMaterial } from "./helpers/makeDefaultMaterial";
 
@@ -21,13 +21,11 @@ import apiCall, {
   API_DELETE,
 } from "./helpers/apiCall";
 
-import { Material, MaterialID } from "./types";
+import { MaterialID, Materials } from "./types";
 
 export const App: React.FunctionComponent = () => {
   // Create state variables and update functions with useState hooks
-  const [materials, setMaterials] = useState(
-    {} as Record<MaterialID, Material>
-  );
+  const [materials, setMaterials] = useState({} as Materials);
   const [selectedMaterial, setSelectedMaterial] = useState("" as MaterialID);
 
   // Action functions for GET, POST, PATCH, and DELETE

@@ -8,3 +8,5 @@ export type Material = {
   color: string;
   deliveryDate: string;
 };
+
+export type Materials = Record<MaterialID, Material>;
