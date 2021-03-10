@@ -7,16 +7,7 @@
  */
 import React from "react";
 
-/**
- * Material typedef
- *
- * @typedef {Object} Material
- * @property {string} name - Name of material
- * @property {number} cost - Cost per cubic meter of material
- * @property {number} volume - Volume in cubic meters of material
- * @property {string} color - Chosen color for material display
- * @property {string} deliveryDate - Volume in cubic meters of material
- */
+import { Material, MaterialID } from "../types";
 
 /**
  * Dead simple form field validation function to pass along properly formatted
@@ -26,16 +17,25 @@ import React from "react";
  * @param {string|number} value - Updated value of field
  * @returns {string|number}
  */
-function validateField(name, value) {
+function validateField(name: string, value: string | number): string | number {
   switch (name) {
     case "volume":
     case "cost":
       // Volume and cost must be non-negative numbers no matter what
-      return Math.abs(value);
+      return Math.abs(value as number);
 
     default:
       return value;
   }
+}
+
+interface MaterialForm {
+  material: Material;
+  updateMaterial: (
+    id: MaterialID,
+    name: string,
+    value: string | number
+  ) => void;
 }
 
 /**
@@ -45,16 +45,21 @@ function validateField(name, value) {
  * @param {Material} props.material - The material we are currently editing
  * @param {function} props.updateMaterial - Callback function that takes a Material.id, the name of the field in question, and its updated value
  */
-export default function MaterialForm({ material, updateMaterial = () => {} }) {
+export const MaterialForm: React.FunctionComponent<MaterialForm> = ({
+  material,
+  updateMaterial,
+}) => {
   // Do not render if we do not have a material
   if (!material) return null;
 
   // simple function to decompose the event and validate field input
-  function wrappedUpdate(event) {
-    const { name, value } = event.target;
-    const newValue = validateField(name, value);
+  function wrappedUpdate(event: React.ChangeEvent<HTMLInputElement>) {
+    if (event.target) {
+      const { name, value } = event.target;
+      const newValue = validateField(name, value);
 
-    updateMaterial(material.id, name, newValue);
+      updateMaterial(material.id, name, newValue);
+    }
   }
 
   return (
@@ -118,4 +123,4 @@ export default function MaterialForm({ material, updateMaterial = () => {} }) {
       </div>
     </form>
   );
-}
+};

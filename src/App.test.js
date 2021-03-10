@@ -4,7 +4,7 @@ import { act } from "react-dom/test-utils";
 
 import { App } from "./App";
 import { MaterialsList } from "./components/MaterialsList";
-import MaterialForm from "./components/MaterialForm";
+import { MaterialForm } from "./components/MaterialForm";
 
 // Mock the Fetch API using our fake fetch.js in the __mocks__ folder
 // jest.mock("fetch");

@@ -8,7 +8,7 @@
  */
 import React, { useState, useEffect } from "react";
 
-import MaterialForm from "./components/MaterialForm";
+import { MaterialForm } from "./components/MaterialForm";
 import { MaterialsList } from "./components/MaterialsList";
 import { TotalCost } from "./components/TotalCost";
 
@@ -51,7 +51,11 @@ export const App: React.FunctionComponent = () => {
       .catch(console.error);
   }
 
-  function updateMaterial(id: MaterialID, field: string, value: string) {
+  function updateMaterial(
+    id: MaterialID,
+    field: string,
+    value: number | string
+  ) {
     const body = { [field]: value };
     const oldMaterial = materials[id];
 
