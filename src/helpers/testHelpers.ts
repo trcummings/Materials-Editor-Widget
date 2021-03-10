@@ -8,7 +8,7 @@ import faker from "faker";
 
 import { formatDateInput } from "./getTodaysDate";
 
-import { Material } from "../types";
+import { Material, MaterialID } from "../types";
 
 /**
  * Function to generate a dictionary of fake materials keyed by id for
@@ -17,18 +17,18 @@ import { Material } from "../types";
  *
  * @function
  * @param {number} numMaterials
- * @returns {Object.<string, Material>}
+ * @returns {Object.<MaterialID, Material>}
  * @example
  * const fakeMaterialsEmpty = generateFakeMaterials(0);
  * const fakeMaterials = generateFakeMaterials(5);
  */
 export function generateFakeMaterials(
   numMaterials: number = 0
-): Record<string, Material> {
+): Record<MaterialID, Material> {
   let _numMaterials = numMaterials;
   if (_numMaterials < 0) _numMaterials = 0;
 
-  const result: Record<string, Material> = {};
+  const result: Record<MaterialID, Material> = {};
 
   for (let i = 0; i < _numMaterials; i++) {
     const material = generateFakeMaterial();
@@ -48,7 +48,7 @@ export function generateFakeMaterials(
  */
 export function generateFakeMaterial(): Material {
   return {
-    id: faker.random.uuid(),
+    id: faker.random.uuid() as MaterialID,
     name: faker.random.word(),
     color: faker.internet.color(),
     cost: parseFloat(`${faker.random.float()}`.slice(-4)),

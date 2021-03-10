@@ -1,5 +1,7 @@
+export type MaterialID = string;
+
 export type Material = {
-  id: string;
+  id: MaterialID;
   name: string;
   cost: number;
   volume: number;
