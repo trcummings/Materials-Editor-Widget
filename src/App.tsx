@@ -9,7 +9,7 @@
 import React, { useState, useEffect } from "react";
 
 import MaterialForm from "./components/MaterialForm";
-import MaterialsList from "./components/MaterialsList";
+import { MaterialsList } from "./components/MaterialsList";
 import { TotalCost } from "./components/TotalCost";
 
 import { makeDefaultMaterial } from "./helpers/makeDefaultMaterial";

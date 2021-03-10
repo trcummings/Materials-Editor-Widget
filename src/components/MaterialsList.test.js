@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import MaterialsList from "./MaterialsList";
+import { MaterialsList } from "./MaterialsList";
 import { MaterialsListItem } from "./MaterialsListItem";
 import { generateFakeMaterials } from "../helpers/testHelpers";
 

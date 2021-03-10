@@ -13,7 +13,7 @@ import { Material, MaterialID } from "../types";
 interface MaterialsListItem {
   material: Material;
   isSelected: boolean;
-  selectMaterial: (id: MaterialID) => {};
+  selectMaterial: (id: MaterialID) => void;
 }
 
 /**
