@@ -2,7 +2,7 @@ import React from "react";
 import { mount, shallow } from "enzyme";
 import { act } from "react-dom/test-utils";
 
-import App from "./App";
+import { App } from "./App";
 import MaterialsList from "./components/MaterialsList";
 import MaterialForm from "./components/MaterialForm";
 

@@ -25,7 +25,7 @@ import apiCall, {
 export const App = () => {
   // Create state variables and update functions with useState hooks
   const [materials, setMaterials] = useState({});
-  const [selectedMaterial, setSelectedMaterial] = useState('');
+  const [selectedMaterial, setSelectedMaterial] = useState("");
 
   // Action functions for GET, POST, PATCH, and DELETE
   function getAllMaterials() {
@@ -133,4 +133,4 @@ export const App = () => {
       <TotalCost materials={materials} />
     </div>
   );
-}
+};
