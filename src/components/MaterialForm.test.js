@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import MaterialForm from "./MaterialForm";
+import { MaterialForm } from "./MaterialForm";
 import { generateFakeMaterial } from "../helpers/testHelpers";
 
 describe("MaterialForm Component", () => {

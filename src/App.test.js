@@ -2,12 +2,12 @@ import React from "react";
 import { mount, shallow } from "enzyme";
 import { act } from "react-dom/test-utils";
 
-import App from "./App";
-import MaterialsList from "./components/MaterialsList";
-import MaterialForm from "./components/MaterialForm";
+import { App } from "./App";
+import { MaterialsList } from "./components/MaterialsList";
+import { MaterialForm } from "./components/MaterialForm";
 
 // Mock the Fetch API using our fake fetch.js in the __mocks__ folder
-jest.mock("fetch");
+// jest.mock("fetch");
 
 describe("App Component", () => {
   it("Should disable the delete button when there are no materials", () => {

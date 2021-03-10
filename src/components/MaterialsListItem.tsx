@@ -8,16 +8,13 @@
  */
 import React from "react";
 
-/**
- * Material typedef
- *
- * @typedef {Object} Material
- * @property {string} name - Name of material
- * @property {number} cost - Cost per cubic meter of material
- * @property {number} volume - Volume in cubic meters of material
- * @property {string} color - Chosen color for material display
- * @property {string} deliveryDate - Volume in cubic meters of material
- */
+import { Material, MaterialID } from "../types";
+
+interface MaterialsListItem {
+  material: Material;
+  isSelected: boolean;
+  selectMaterial: (id: MaterialID) => void;
+}
 
 /**
  * MaterialsListItem
@@ -27,11 +24,11 @@ import React from "react";
  * @param {boolean} props.isSelected - Lets list item know if it's selected or not
  * @param {function} props.selectMaterial - Callback function that takes a Material.id
  */
-export default function MaterialsListItem({
-  material = {},
+export const MaterialsListItem: React.FunctionComponent<MaterialsListItem> = ({
+  material,
   isSelected = false,
   selectMaterial = () => {},
-}) {
+}) => {
   // No need to fire selectMaterial function if already selected
   const onClick = isSelected ? () => {} : () => selectMaterial(material.id);
   // In the unlikely event we don't have a material, we don't want to hard crash
@@ -55,4 +52,4 @@ export default function MaterialsListItem({
       </div>
     </li>
   );
-}
+};

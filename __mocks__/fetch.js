@@ -18,12 +18,12 @@ export default function fetch(url, req) {
 
     case API_POST:
       return Promise.resolve({
-        json: () =>
-          Promise.resolve(
-            Object.assign({}, JSON.parse(req.body), {
-              id: faker.random.uuid(),
-            })
-          ),
+        json: () => {
+          const id = faker.random.uuid();
+          return Promise.resolve({
+            [id]: Object.assign({}, JSON.parse(req.body), { id }),
+          });
+        },
       });
 
     case API_PATCH:
@@ -38,11 +38,11 @@ export default function fetch(url, req) {
 
       return Promise.resolve({
         json: () =>
-          Promise.resolve(
-            Object.assign({}, JSON.parse(req.body), {
+          Promise.resolve({
+            [id]: Object.assign({}, JSON.parse(req.body), {
               id,
-            })
-          ),
+            }),
+          }),
       });
 
     default:

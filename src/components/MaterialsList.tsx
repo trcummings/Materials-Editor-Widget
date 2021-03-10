@@ -7,32 +7,29 @@
  */
 import React from "react";
 
-import MaterialsListItem from "./MaterialsListItem";
+import { MaterialsListItem } from "./MaterialsListItem";
 
-/**
- * Material typedef
- *
- * @typedef {Object} Material
- * @property {string} name - Name of material
- * @property {number} cost - Cost per cubic meter of material
- * @property {number} volume - Volume in cubic meters of material
- * @property {string} color - Chosen color for material display
- * @property {string} deliveryDate - Volume in cubic meters of material
- */
+import { MaterialID, Materials } from "../types";
+
+interface MaterialsList {
+  materials: Materials;
+  selectedMaterial: MaterialID;
+  setSelectedMaterial: (id: MaterialID) => void;
+}
 
 /**
  * MaterialsList
  *
  * @param {Props} props Component props
- * @param {Object.<string, Material>} props.materials - Materials dictionary
+ * @param {Materials} props.materials - Materials dictionary
  * @param {boolean} props.selectedMaterial - The currently selected material id
  * @param {function} props.setSelectedMaterial - Callback function that takes a Material.id
  */
-export default function MaterialsList({
+export const MaterialsList: React.FunctionComponent<MaterialsList> = ({
   materials = {},
   selectedMaterial,
   setSelectedMaterial,
-}) {
+}) => {
   const materialIds = Object.keys(materials);
 
   if (materialIds.length === 0) {
@@ -55,4 +52,4 @@ export default function MaterialsList({
       ))}
     </ul>
   );
-}
+};

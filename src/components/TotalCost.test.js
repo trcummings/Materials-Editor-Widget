@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import TotalCost from "./TotalCost";
+import { TotalCost } from "./TotalCost";
 import { generateFakeMaterials } from "../helpers/testHelpers";
 import calculateTotalCost from "../helpers/calculateTotalCost";
 

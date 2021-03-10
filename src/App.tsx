@@ -8,11 +8,10 @@
  */
 import React, { useState, useEffect } from "react";
 
-import MaterialForm from "./components/MaterialForm";
-import MaterialsList from "./components/MaterialsList";
-import TotalCost from "./components/TotalCost";
+import { MaterialForm } from "./components/MaterialForm";
+import { MaterialsList } from "./components/MaterialsList";
+import { TotalCost } from "./components/TotalCost";
 
-import { getTodaysDate } from "./helpers/getTodaysDate";
 import { makeDefaultMaterial } from "./helpers/makeDefaultMaterial";
 
 import apiCall, {
@@ -22,10 +21,12 @@ import apiCall, {
   API_DELETE,
 } from "./helpers/apiCall";
 
-export default function App() {
+import { MaterialID, Materials } from "./types";
+
+export const App: React.FunctionComponent = () => {
   // Create state variables and update functions with useState hooks
-  const [materials, setMaterials] = useState({});
-  const [selectedMaterial, setSelectedMaterial] = useState(null);
+  const [materials, setMaterials] = useState({} as Materials);
+  const [selectedMaterial, setSelectedMaterial] = useState("" as MaterialID);
 
   // Action functions for GET, POST, PATCH, and DELETE
   function getAllMaterials() {
@@ -42,41 +43,44 @@ export default function App() {
   function addMaterial() {
     apiCall(API_POST, makeDefaultMaterial())
       .then((data) => {
-        // Data is the newly created object, so add it into the
-        // existing app state
-        setMaterials(Object.assign({}, materials, { [data.id]: data }));
+        const id = Object.keys(data)[0];
+        setMaterials(Object.assign({}, materials, { [id]: data[id] }));
         // Select our newly created material to edit it.
-        setSelectedMaterial(data.id);
+        setSelectedMaterial(id);
       })
       .catch(console.error);
   }
 
-  function updateMaterial(id, field, value) {
+  function updateMaterial(
+    id: MaterialID,
+    field: string,
+    value: number | string
+  ) {
     const body = { [field]: value };
     const oldMaterial = materials[id];
 
     apiCall(API_PATCH, body, id)
       .then((data) => {
         // Pack receieved material into shape of materials state
-        const newMaterial = { [id]: { ...oldMaterial, ...data } };
+        const newMaterials = { [id]: { ...oldMaterial, ...data[id] } };
         // Add it into our materials state
-        setMaterials(Object.assign({}, materials, newMaterial));
+        setMaterials(Object.assign({}, materials, newMaterials));
       })
       .catch(console.error);
   }
 
-  function deleteMaterial(id) {
+  function deleteMaterial(id: MaterialID) {
     apiCall(API_DELETE, {}, id)
       .then((data) => {
-        // Response is the deleted material
-        const _id = data.id;
+        // Response is the deleted material, which is the only material in the dictionary
+        const _id = Object.keys(data)[0];
         // Create new materials object and remove the returned object from it
         const newMaterials = Object.assign({}, materials);
         delete newMaterials[_id];
         // First, update selected material to be a different material, if any exist
         const newKeys = Object.keys(newMaterials);
         if (newKeys.length > 0) setSelectedMaterial(newKeys[0]);
-        else setSelectedMaterial(null);
+        else setSelectedMaterial("");
         // Then, set new materials in app state
         setMaterials(newMaterials);
       })
@@ -133,4 +137,4 @@ export default function App() {
       <TotalCost materials={materials} />
     </div>
   );
-}
+};
