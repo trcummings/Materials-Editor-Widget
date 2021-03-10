@@ -5,16 +5,7 @@
  * @author [Thomsen Cummings](https://github.com/trcummings)
  */
 
-/**
- * Material typedef
- *
- * @typedef {Object} Material
- * @property {string} name - Name of material
- * @property {number} cost - Cost per cubic meter of material
- * @property {number} volume - Volume in cubic meters of material
- * @property {string} color - Chosen color for material display
- * @property {string} deliveryDate - Volume in cubic meters of material
- */
+import { Material } from "../types";
 
 /**
  * Calculate the total cost of all materials
@@ -24,7 +15,9 @@
  * @returns {string} -- in format "0.00"
  *
  */
-export default function calculateTotalCost(materials = {}) {
+export default function calculateTotalCost(
+  materials: Record<string, Material>
+): string {
   // calculate the total
   const total = Object.keys(materials).reduce(
     (acc, id) => acc + materials[id].cost * materials[id].volume,
@@ -32,5 +25,5 @@ export default function calculateTotalCost(materials = {}) {
   );
 
   // format it so there are only ever two decimal places
-  return Number.parseFloat(total).toFixed(2);
+  return total.toFixed(2).toString();
 }

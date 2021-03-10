@@ -4,25 +4,11 @@
  * @version 1.0.0
  * @author [Thomsen Cummings](https://github.com/trcummings)
  */
+import faker from "faker";
 
-/**
- * NB: write imports in non-ES6 import style so the mockBackend can use
- * it without runtime Babel transpilation
- */
-const faker = require("faker");
+import { formatDateInput } from "./getTodaysDate";
 
-const { formatDateInput } = require("./getTodaysDate");
-
-/**
- * Material typedef
- *
- * @typedef {Object} Material
- * @property {string} name - Name of material
- * @property {number} cost - Cost per cubic meter of material
- * @property {number} volume - Volume in cubic meters of material
- * @property {string} color - Chosen color for material display
- * @property {string} deliveryDate - Volume in cubic meters of material
- */
+import { Material } from "../types";
 
 /**
  * Function to generate a dictionary of fake materials keyed by id for
@@ -36,11 +22,13 @@ const { formatDateInput } = require("./getTodaysDate");
  * const fakeMaterialsEmpty = generateFakeMaterials(0);
  * const fakeMaterials = generateFakeMaterials(5);
  */
-function generateFakeMaterials(numMaterials = 0) {
+export function generateFakeMaterials(
+  numMaterials: number = 0
+): Record<string, Material> {
   let _numMaterials = numMaterials;
   if (_numMaterials < 0) _numMaterials = 0;
 
-  const result = {};
+  const result: Record<string, Material> = {};
 
   for (let i = 0; i < _numMaterials; i++) {
     const material = generateFakeMaterial();
@@ -58,7 +46,7 @@ function generateFakeMaterials(numMaterials = 0) {
  * @example
  * const fakeMaterial = generateFakeMaterial();
  */
-function generateFakeMaterial() {
+export function generateFakeMaterial(): Material {
   return {
     id: faker.random.uuid(),
     name: faker.random.word(),
@@ -68,5 +56,3 @@ function generateFakeMaterial() {
     deliveryDate: formatDateInput(faker.date.future()),
   };
 }
-
-module.exports = { generateFakeMaterial, generateFakeMaterials };

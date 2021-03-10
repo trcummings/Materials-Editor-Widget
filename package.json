@@ -4,21 +4,26 @@
   "description": "",
   "main": "src/index.tsx",
   "scripts": {
+    "babel-node": "./node_modules/.bin/babel-node -x .ts",
+    "server": "npm run babel-node server.js",
     "test": "npm run prod; jest",
-    "dev": "concurrently \"node server.js\" \"webpack-dev-server --open --mode development\"",
+    "dev": "concurrently \"npm run server\" \"webpack-dev-server --open --mode development\"",
     "prod": "webpack --mode=production",
     "docs": "jsdoc -c jsdoc.conf.json",
     "build": "npm run prod",
-    "start": "node server.js"
+    "start": "npm run server"
   },
   "keywords": [],
   "author": "Thomsen Cummings",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.13.10",
     "@babel/core": "^7.13.8",
+    "@babel/node": "^7.13.10",
     "@babel/preset-env": "^7.13.9",
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.13.0",
+    "@types/faker": "^5.1.7",
     "@types/jest": "^26.0.20",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",

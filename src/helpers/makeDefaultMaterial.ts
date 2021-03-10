@@ -6,16 +6,7 @@
  */
 import { getTodaysDate } from "./getTodaysDate";
 
-/**
- * Material typedef
- *
- * @typedef {Object} Material
- * @property {string} name - Name of material
- * @property {number} cost - Cost per cubic meter of material
- * @property {number} volume - Volume in cubic meters of material
- * @property {string} color - Chosen color for material display
- * @property {string} deliveryDate - Volume in cubic meters of material
- */
+import { Material } from "../types";
 
 /**
  * Creates a generic Material (to be used to create a new one via POST request).
@@ -25,7 +16,7 @@ import { getTodaysDate } from "./getTodaysDate";
  * @example
  * const newMaterial = makeDefaultMaterial();
  */
-export function makeDefaultMaterial() {
+export function makeDefaultMaterial(): Partial<Material> {
   return {
     name: "New Material",
     cost: 0,

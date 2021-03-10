@@ -14,7 +14,7 @@
  * @example
  * const todaysDate = formatDateInput(new Date());
  */
-function formatDateInput(date = new Date()) {
+export function formatDateInput(date = new Date()) {
   const yyyy = `${date.getFullYear()}`;
 
   // NB: Date's "getMonth" function is ZERO INDEXED. C'mon man!
@@ -35,12 +35,6 @@ function formatDateInput(date = new Date()) {
  * @example
  * const todaysDate = getTodaysDate();
  */
-function getTodaysDate() {
+export function getTodaysDate() {
   return formatDateInput();
 }
-
-/**
- * NB: write exports in non-ES6 import style so the mockBackend can use
- * it without runtime Babel transpilation
- */
-module.exports = { formatDateInput, getTodaysDate };

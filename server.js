@@ -4,10 +4,7 @@ const cors = require("cors");
 const faker = require("faker");
 
 const { PORT } = require("./config");
-const {
-  generateFakeMaterial,
-  generateFakeMaterials,
-} = require("./src/helpers/testHelpers");
+const { generateFakeMaterials } = require("./src/helpers/testHelpers");
 
 const app = express();
 const port = PORT;
