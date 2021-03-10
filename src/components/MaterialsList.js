@@ -7,7 +7,7 @@
  */
 import React from "react";
 
-import MaterialsListItem from "./MaterialsListItem";
+import { MaterialsListItem } from "./MaterialsListItem";
 
 /**
  * Material typedef

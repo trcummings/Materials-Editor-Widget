@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import MaterialsListItem from "./MaterialsListItem";
+import { MaterialsListItem } from "./MaterialsListItem";
 import { generateFakeMaterial } from "../helpers/testHelpers";
 
 describe("MaterialsListItem Component", () => {
