@@ -2,13 +2,13 @@
 
 ### What is This?
 
-Hello, I am Thomsen Cummings, and this is a basic showcase of my current familiarity of web development paradigms. The codebase is entirely from an application phase of a project pipeline I completed in October 2020 and repurposed to show recent web dev work to potential employers. This README contains instructions on how to run the repo, as well as a technical breakdown of the process.
+Hello, I am Thomsen Cummings, and the purpose of this widget is to organize materials for delivery to a construction site. It contains a list of materials, and a material editor form, and a line which displays the total cost of all the materials. This README contains instructions on how to run the repo, as well as a technical breakdown of the process.
 
-The purpose of this widget is to organize materials for delivery to a construction site. It contains a list of materials, and a material editor form, and a line which displays the total cost of all the materials.
+I also recently converted this repo to TypeScript rather than plain JS to familiarize myself with TypeScript (this is my first time working with it!), and the time I spent in that is not included in the breakdown. All told, however, it took about 4 hours in total to get my bearings with the TS build process, and then convert this small repo.
 
 **Here is the technical stack:**
 
-- React.js for frontend code (with FontAwesome 5.14 for icons, and Google Fonts' Open Sans)
+- Typescript and React.js for frontend code (with FontAwesome 5.14 for icons, and Google Fonts' Open Sans)
 - Babel and Webpack 4.0 for the build pipeline
 - Express.js for the pseudo-API backend
 - Jest, Enzyme, and Faker.js for testing
@@ -36,7 +36,7 @@ The purpose of this widget is to organize materials for delivery to a constructi
 
 **NB: This test suite will only run on Node Version 10 or later**, which I believe is an issue with Jest. For the purposes of development I have been using Node Version 12.14.1.
 
-1. run `npm run test` — This will run the Jest test suite, set up the Enzyme adapter, and run through all of the tests.
+1. run `npm run test` — This will build the bundle in production, and run the Jest test suite against it, set up the Enzyme adapter, and run through all of the tests.
 2. Look at all that green!
 
 ## How Much Time I Spent on It (and Why)
